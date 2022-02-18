@@ -1,3 +1,4 @@
+import type { MetaFunction } from "remix";
 import {
   Links,
   LiveReload,
@@ -7,8 +8,24 @@ import {
   ScrollRestoration,
   useCatch,
 } from "remix";
+import Navbar from "~/components/Navbar";
 
-import { ChakraProvider, Box, Heading } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  Box,
+  Heading,
+  Grid,
+  GridItem,
+  Center,
+} from "@chakra-ui/react";
+import { SocialList } from "./components/SocialList";
+
+export const meta: MetaFunction = () => {
+  const description = `Podcasts about History with K`;
+  return {
+    description,
+  };
+};
 
 function Document({
   children,
@@ -37,18 +54,26 @@ function Document({
 }
 
 export default function App() {
-  // throw new Error("💣💥 Booooom");
-
   return (
     <Document>
       <ChakraProvider>
-        <Outlet />
+        <Navbar />
+        <Center>
+          <Heading>History with K</Heading>
+        </Center>
+        <Grid templateColumns="repeat(12, 1fr)" gap={2}>
+          <GridItem colSpan={4}>
+            <SocialList />
+          </GridItem>
+          <GridItem colSpan={8}>
+            <Outlet />
+          </GridItem>
+        </Grid>
       </ChakraProvider>
     </Document>
   );
 }
 
-// How ChakraProvider should be used on CatchBoundary
 export function CatchBoundary() {
   const caught = useCatch();
 
@@ -65,7 +90,6 @@ export function CatchBoundary() {
   );
 }
 
-// How ChakraProvider should be used on ErrorBoundary
 export function ErrorBoundary({ error }: { error: Error }) {
   return (
     <Document title="Error!">
