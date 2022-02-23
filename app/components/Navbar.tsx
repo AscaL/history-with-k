@@ -2,23 +2,14 @@ import { ReactNode } from "react";
 import {
   Box,
   Flex,
-  Avatar,
   HStack,
-  Link,
   IconButton,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
   useDisclosure,
-  useColorModeValue,
   Stack,
   Center,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import { Link as RemixLink } from "remix";
+import { Link, NavLink } from "remix";
 
 const Links = [
   { name: "Home", to: "/" },
@@ -29,27 +20,12 @@ export interface NavbarPorps {
   link: { name: string; to: string };
 }
 
-const NavLink = ({ link }: NavbarPorps) => (
-  <Link
-    as={RemixLink}
-    to={link.to}
-    px={2}
-    py={1}
-    rounded={"md"}
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}>
-    {link.name}
-  </Link>
-);
-
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Center bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+      <Center bg="black" px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
@@ -61,10 +37,16 @@ export default function Navbar() {
           <HStack spacing={8} alignItems={"center"}>
             <HStack
               as={"nav"}
-              spacing={4}
+              spacing={8}
               display={{ base: "none", md: "flex" }}>
               {Links.map((link) => (
-                <NavLink key={link.name} link={link}></NavLink>
+                <Link
+                  style={{ color: "yellow" }}
+                  key={link.name}
+                  to={link.to}
+                  prefetch="intent">
+                  {link.name}
+                </Link>
               ))}
             </HStack>
           </HStack>
@@ -74,7 +56,13 @@ export default function Navbar() {
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
               {Links.map((link) => (
-                <NavLink key={link.name} link={link}></NavLink>
+                <Link
+                  style={{ color: "yellow" }}
+                  key={link.name}
+                  to={link.to}
+                  prefetch="intent">
+                  {link.name}
+                </Link>
               ))}
             </Stack>
           </Box>

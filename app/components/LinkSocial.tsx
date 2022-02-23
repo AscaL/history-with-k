@@ -1,4 +1,4 @@
-import { Avatar, Box, Center, Circle, Link, Text } from "@chakra-ui/react";
+import { Avatar, Center, Circle, Link, Text } from "@chakra-ui/react";
 
 export function LinkSocial({
   size,

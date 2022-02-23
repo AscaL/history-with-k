@@ -1,7 +1,7 @@
 import { VStack } from "@chakra-ui/react";
 import { LinkSocial } from "~/components/LinkSocial";
 import spotifyIcon from "../../public/spotify-icon-black-bg.png";
-import youtubeIcon from "../../public/youtube-icon.png";
+import youtubeIcon from "../../public/player-icon.png";
 import soundcloudIcon from "../../public/soundcloud-icon.png";
 
 const LinkItems = [
