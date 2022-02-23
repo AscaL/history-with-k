@@ -1,5 +1,5 @@
 import { Grid, GridItem, Box, Heading, Center } from "@chakra-ui/react";
-import { MetaFunction, Outlet } from "remix";
+import { Link, MetaFunction, Outlet } from "remix";
 import { SocialList } from "~/components/SocialList";
 
 export const meta: MetaFunction = () => {
@@ -12,7 +12,7 @@ export const meta: MetaFunction = () => {
 export default function PodcastsRoute() {
   return (
     <Box>
-      <p>Podcasts List ?</p>
+      <Link to="panedigrano">Panedigrano</Link>
       <Outlet />
     </Box>
   );

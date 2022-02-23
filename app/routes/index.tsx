@@ -1,8 +1,7 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { MetaFunction, useLoaderData } from "remix";
 import type { LoaderFunction } from "remix";
 import parseFrontMatter from "front-matter";
-import Markdown from "marked-react";
 import {
   getAllPodcastsMarkdown,
   getPodcastMarkdown,
@@ -16,7 +15,7 @@ export type PodcastMarkdownAttributes = {
   audioUrl: string;
 };
 
-type PodcastMarkdown = {
+export type PodcastMarkdown = {
   attributes: PodcastMarkdownAttributes;
   body: string;
 };
